@@ -1,0 +1,50 @@
+/*-------------START - MAIN--------------*/
+main{
+  margin-top: 50px;
+  .setFlex();
+  flex-direction: column;
+.frame{
+    &_edit,&_visual{
+      .setFlex();
+      flex-wrap: nowrap;
+      margin: 30px 0;
+      padding: 40px;
+       border: 3px dashed #cccccc;
+    }
+    &_edit{
+
+      #editor_js,#editor_html,.init_data {
+        height: 350px;
+        box-sizing: border-box;
+        width: 100%;
+      }
+    }
+    &_visual{
+      iframe{
+        width: 100%;
+        background-color: white;
+      }
+    }
+  }
+
+.btn_check{
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 22px;
+  transition: .3s;
+  text-align: center;
+  background-color: @base-text-color;
+  color: @base-background-color;
+
+  border: 3px dashed transparent;
+
+    &:hover {
+      border: 3px dashed #cccccc;
+      color: @base-text-color;
+      background-color: @base-background-color;
+    }
+  }
+}
+/*-------------END - MAIN--------------*/

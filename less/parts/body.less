@@ -1,0 +1,47 @@
+@font-face{
+  font-family: 'Raleway', 'Arial', sans-serif;
+  src:  url('../fonts/Raleway-Regular') format('.ttf');
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: 'Raleway', 'Arial', sans-serif;
+  src:  url('../fonts/Raleway-Bold') format('.ttf');
+  font-weight: bold;
+}
+
+html, body{
+  .setColorStyle();
+  .setTextStyle();
+  background-size: cover;
+}
+ body{
+    min-width: @mobile-width;
+ }
+
+ .container { 
+   width: 400px;
+   margin: 0 auto;
+ } 
+
+ //до 768px мобильная версия
+ @media (max-width: @tablet-width) { 
+   .container { 
+     padding: 0 20px;
+   } 
+} 
+ 
+// От 768px планшетная версия 
+@media (min-width: @tablet-width) { 
+  .container { 
+    width: 648px;
+    padding: 0 60px;
+  } 
+} 
+ 
+// От 1200 десктопная версия 
+@media (min-width: @desktop-width) { 
+  .container { 
+    width: @desktop-width;
+  } 
+}

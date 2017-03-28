@@ -1,0 +1,81 @@
+/**-----------------COLORS----------------------**/
+
+
+/**-----------------SCREEN WIDTH----------------------**/
+
+@desktop-width: 1200px;
+@tablet-width: 768px;
+@mobile-width: 320px;
+
+/**-----------------FONT SIZE----------------------**/
+
+@desktop-font-size: 14px;
+@desktop-font-size-p: @desktop-font-size + 7; // 21
+@desktop-font-size-h: @desktop-font-size + 16; // 30
+@desktop-line-height: 24px; // 24
+@desktop-line-height-h: @desktop-line-height + 2; // 26
+
+
+/**-----------------BASE STYLE----------------------**/
+
+@font-family: 'Raleway', 'Arial', sans-serif;
+@base-text-color: #adb7bd;
+@base-background-color: #1C2329;
+
+/*------------------MIXINS---------------*/
+
+ .setColorStyle(@color: @base-text-color; @backcolor: @base-background-color){
+  color: @color;
+  background-color: @backcolor;
+}
+
+.setTextStyle(){
+  font-family: @font-family;
+  font-size: 100%;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+
+}
+
+.setTextSize(@size: @desktop-font-size; @height: @desktop-line-height; @weight: normal) {
+ font-size: @size;
+ line-height: @height;
+ font-weight: @weight;
+}
+
+.setFlex(@direction: row; @content: space-between;) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: @content;
+  flex-direction: @direction;
+}
+
+.zero-centered() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.setPaddingLR(@value: 0px){
+  padding-left: @value;
+  padding-right: @value;
+}
+
+.setPaddingTB(@value){
+  padding-top: @value;
+  padding-bottom: @value;
+}
+
+.setMarginLR(@value: 0px){
+  margin-left: @value;
+  margin-right: @value;
+}
+
+.setMarginTB(@value: 0px){
+  margin-top: @value;
+  margin-bottom: @value;
+}

@@ -1,0 +1,307 @@
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+/**-----------------COLORS----------------------**/
+/**-----------------SCREEN WIDTH----------------------**/
+/**-----------------FONT SIZE----------------------**/
+/**-----------------BASE STYLE----------------------**/
+/*------------------MIXINS---------------*/
+@font-face {
+  font-family: 'Raleway', 'Arial', sans-serif;
+  src: url('../fonts/Raleway-Regular') format('.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Raleway', 'Arial', sans-serif;
+  src: url('../fonts/Raleway-Bold') format('.ttf');
+  font-weight: bold;
+}
+html,
+body {
+  color: #adb7bd;
+  background-color: #1c2329;
+  font-family: 'Raleway', 'Arial', sans-serif;
+  font-size: 100%;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  background-size: cover;
+}
+body {
+  min-width: 320px;
+}
+.container {
+  width: 400px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+   .container {
+    padding: 0 20px;
+  }
+}
+@media (min-width: 768px) {
+   .container {
+    width: 648px;
+    padding: 0 60px;
+  }
+}
+@media (min-width: 1200px) {
+   .container {
+    width: 1200px;
+  }
+}
+/*-------------START - HEAD--------------*/
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+}
+header h1 {
+  color: white;
+  font-size: 54px;
+  line-height: 58px;
+  font-weight: 300;
+  margin: 50px 0px 40px;
+  padding: 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+header p {
+  color: #f8f8f8;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+  margin: 0;
+  padding: 5px;
+  text-align: left;
+}
+/*-------------START - MAIN--------------*/
+main {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-direction: column;
+}
+main .frame_edit,
+main .frame_visual {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 30px 0;
+  padding: 40px;
+  border: 3px dashed #cccccc;
+}
+main .frame_edit #editor_js,
+main .frame_edit #editor_html,
+main .frame_edit .init_data {
+  height: 350px;
+  box-sizing: border-box;
+  width: 100%;
+}
+main .frame_visual iframe {
+  width: 100%;
+  background-color: white;
+}
+main .btn_check {
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 22px;
+  transition: .3s;
+  text-align: center;
+  background-color: #adb7bd;
+  color: #1c2329;
+  border: 3px dashed transparent;
+}
+main .btn_check:hover {
+  border: 3px dashed #cccccc;
+  color: #adb7bd;
+  background-color: #1c2329;
+}
