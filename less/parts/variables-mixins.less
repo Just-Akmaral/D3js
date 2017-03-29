@@ -19,14 +19,18 @@
 /**-----------------BASE STYLE----------------------**/
 
 @font-family: 'Raleway', 'Arial', sans-serif;
-@base-text-color: #adb7bd;
-@base-background-color: #1C2329;
+@base-text-color: #adb7bd;//светлый
+@base-background-color: #1C2329;//темный
 
 /*------------------MIXINS---------------*/
 
- .setColorStyle(@color: @base-text-color; @backcolor: @base-background-color){
-  color: @color;
-  background-color: @backcolor;
+ .setColorStyle(@color) when (lightness(@color)<=50%){
+  color: @base-text-color;
+  background-color: @base-background-color;
+}
+.setColorStyle(@color) when (lightness(@color)>50%){
+ color: black;
+ background-color: white;
 }
 
 .setTextStyle(){
@@ -44,9 +48,8 @@
  font-weight: @weight;
 }
 
-.setFlex(@direction: row; @content: space-between;) {
+.setFlex(@direction: row; @content: center;) {
   display: flex;
-  flex-wrap: wrap;
   justify-content: @content;
   flex-direction: @direction;
 }

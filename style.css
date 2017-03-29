@@ -197,8 +197,8 @@ th {
 }
 html,
 body {
-  color: #adb7bd;
-  background-color: #1c2329;
+  color: black;
+  background-color: white;
   font-family: 'Raleway', 'Arial', sans-serif;
   font-size: 100%;
   font-weight: normal;
@@ -232,67 +232,40 @@ body {
 /*-------------START - HEAD--------------*/
 header {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
-  flex-direction: column;
-  align-items: center;
+  color: #adb7bd;
+  background-color: #1c2329;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-header h1 {
+header .intro h1 {
   color: white;
-  font-size: 54px;
-  line-height: 58px;
+  font-size: 30px;
+  line-height: 24px;
   font-weight: 300;
-  margin: 50px 0px 40px;
+  margin: 10px 0px 8px;
   padding: 5px;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
 }
-header p {
+header .intro p {
   color: #f8f8f8;
-  font-size: 16px;
+  font-size: 21px;
   line-height: 26px;
   font-weight: 500;
   margin: 0;
   padding: 5px;
   text-align: left;
 }
-/*-------------START - MAIN--------------*/
-main {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-direction: column;
-}
-main .frame_edit,
-main .frame_visual {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin: 30px 0;
-  padding: 40px;
-  border: 3px dashed #cccccc;
-}
-main .frame_edit #editor_js,
-main .frame_edit #editor_html,
-main .frame_edit .init_data {
-  height: 350px;
-  box-sizing: border-box;
-  width: 100%;
-}
-main .frame_visual iframe {
-  width: 100%;
-  background-color: white;
-}
-main .btn_check {
+header .btn_check {
+  width: 100px;
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
   padding: 10px;
+  margin: 5px;
   font-size: 22px;
   transition: .3s;
   text-align: center;
@@ -300,8 +273,37 @@ main .btn_check {
   color: #1c2329;
   border: 3px dashed transparent;
 }
-main .btn_check:hover {
+header .btn_check:hover {
   border: 3px dashed #cccccc;
   color: #adb7bd;
   background-color: #1c2329;
+}
+/*-------------START - MAIN--------------*/
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+main .init_data {
+  width: 20%;
+}
+main .frame_edit,
+main .frame_visual {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-direction: column;
+}
+main .frame_edit #editor_js,
+main .frame_edit #editor_html {
+  height: 300px;
+  box-sizing: border-box;
+  width: 480px;
+}
+main .frame_visual {
+  width: 100%;
+}
+main .frame_visual iframe {
+  height: 100%;
+  background-color: white;
 }

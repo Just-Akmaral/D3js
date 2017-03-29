@@ -7,24 +7,26 @@
     <link href="normalize.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
-<body class="container">
+<body>
   <header>
-    <h1>Приятный сердцу заголовок</h1>
-    <p>Данные визуализируй исходные, мой юный падаван. d3js поюзай.</p>
+    <section class="intro">
+      <h1>Приятный сердцу заголовок</h1>
+      <p>Данные визуализируй исходные, мой юный падаван. d3js поюзай.</p>
+    </section>
+    <button class="btn_check">Run</button>
   </header>
   <main>
+    <textarea class="init_data" name="text">the initial data</textarea>
     <section class="frame_edit">
-      <textarea class="init_data" name="text">the initial data</textarea>
       <div id="editor_html"></div>
       <div id="editor_js"></div>
     </section>
-    <button class="btn_check">Отправить на проверку</button>
     <section class="frame_visual">
       <iframe></iframe>
       <iframe></iframe>
     </section>
   </main>
     <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>
-    <script src="js/jscode.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
