@@ -1,10 +1,19 @@
-var editor_js = ace.edit("editor_js");
-editor_js.setTheme("ace/theme/Dreamweaver");
-editor_js.getSession().setMode("ace/mode/javascript");
-editor_js.setValue("var x = 'write js here';"); // or session.setValuы
-editor_js.setReadOnly(true);
+var code_area_html = '<!DOCTYPE html>\n<html>\n<head lang="en">\n    <meta charset="UTF-8">' +
+    '\n    <title>d3</title>\n<style>\nbody {font-size: 14px;}</style>\n</head>' +
+    '\n<body>\n</body>\n</html>';
 
-var editor_html = ace.edit("editor_html");
-editor_html.setTheme("ace/theme/Dreamweaver");
-editor_html.getSession().setMode("ace/mode/html");
-editor_html.setValue("<p>write html here</p>"); // or session.setValuы
+
+var editor = ace.edit("editor");
+editor.setTheme("ace/theme/Dreamweaver");
+editor.getSession().setMode("ace/mode/javascript");
+
+var iframe = document.getElementById("frame_result");
+var doc = iframe.contentDocument ||
+          iframe.contentWindow.document;
+
+
+editor.getSession().on('change', function() {
+    doc.open();
+    doc.write(code_area_html+ "<script>" + editor.getValue() + "<\/script>");
+    doc.close();
+});

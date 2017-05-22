@@ -8,13 +8,10 @@ main{
     &_edit,&_visual{
       .setFlex();
       flex-direction: column;
-  //    margin: 30px 0;
-  //    padding: 40px;
-  //     border: 3px dashed #cccccc;
     }
     &_edit{
-      #editor_js,#editor_html {
-        height: 300px;
+      #editor {
+        min-height: 300px;
         box-sizing: border-box;
         width: 480px;
       }
@@ -23,8 +20,7 @@ main{
       width: 100%;
       iframe{
       height: 100%;
-
-        background-color: white;
+      background-color: white;
       }
     }
   }

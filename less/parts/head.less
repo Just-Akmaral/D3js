@@ -3,19 +3,20 @@ header{
   .setFlex();
   .setColorStyle(black);
   justify-content: space-between;
-  .setPaddingTB(10px);
+  padding: 10px;
   .intro{
+    .setPaddingLR(15px);
     h1{
       color: white;
-      .setTextSize(@size: @desktop-font-size-h; @height: @desktop-line-height; @weight: 300);
-      margin: 10px 0px 8px;
+      .setTextSize(@size: @desktop-font-size-h; @height: @desktop-line-height-h; @weight: 300);
+      margin: 10px 0px;
       padding: 5px;
       text-transform: uppercase;
       text-align: left;
     }
     p{
       color: #f8f8f8;
-      .setTextSize(@size: @desktop-font-size-p; @height: 26px; @weight: 500);
+      .setTextSize(@size: @desktop-font-size-p; @height:  @desktop-line-height; @weight: 500);
       margin: 0;
       padding: 5px;
       text-align: left;
@@ -27,7 +28,7 @@ header{
     border-radius: 5px;
     text-decoration: none;
     padding: 10px;
-    margin:5px;
+    margin: 10px;
     font-size: 22px;
     transition: .3s;
     text-align: center;

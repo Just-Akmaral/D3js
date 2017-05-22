@@ -237,23 +237,26 @@ header {
   color: #adb7bd;
   background-color: #1c2329;
   justify-content: space-between;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
+}
+header .intro {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 header .intro h1 {
   color: white;
   font-size: 30px;
-  line-height: 24px;
+  line-height: 26px;
   font-weight: 300;
-  margin: 10px 0px 8px;
+  margin: 10px 0px;
   padding: 5px;
   text-transform: uppercase;
   text-align: left;
 }
 header .intro p {
   color: #f8f8f8;
-  font-size: 21px;
-  line-height: 26px;
+  font-size: 19px;
+  line-height: 24px;
   font-weight: 500;
   margin: 0;
   padding: 5px;
@@ -265,7 +268,7 @@ header .btn_check {
   border-radius: 5px;
   text-decoration: none;
   padding: 10px;
-  margin: 5px;
+  margin: 10px;
   font-size: 22px;
   transition: .3s;
   text-align: center;
@@ -294,9 +297,8 @@ main .frame_visual {
   flex-direction: row;
   flex-direction: column;
 }
-main .frame_edit #editor_js,
-main .frame_edit #editor_html {
-  height: 300px;
+main .frame_edit #editor {
+  min-height: 300px;
   box-sizing: border-box;
   width: 480px;
 }
