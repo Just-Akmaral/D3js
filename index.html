@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>something cool</title>
     <link href="normalize.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
@@ -20,7 +20,6 @@
           </ul>
       </nav>
     </section>
-    <!-- <button class="btn_check">Check</button> -->
   </header>
   <main>
     <section class="frame_edit">
@@ -28,17 +27,19 @@
     </section>
     <section class="frame_visual">
       <iframe id="frame_now"></iframe>
-      <iframe id="frame_check"></iframe>
+      <iframe id="frame_true"></iframe>
     </section>
     <section class="task">
       <h2>Задание</h2>
       <p>
         Вы должны исправить код так, чтобы получилось как в окне с образцом.
       </p>
-      <button class="btn_check">Check</button>
+      <button class="btn_check" onclick="toCheckScreen()">Check</button>
     </section>
   </main>
-  <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>
+  <script src="js/ace.js"></script>
+  <script src="js/html2canvas.js"></script>
+  <script src="js/resemble.js"></script>
   <script src="js/index.js"></script>
 </body>
 </html>
