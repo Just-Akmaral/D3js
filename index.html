@@ -11,16 +11,31 @@
   <header>
     <section class="intro">
       <h1>Курсовая по D3.js</h1>
-      <p>Все необходимые <a href="data.json" download>данные</a> уже вшиты.</p>
+      <nav class="header-navigation">
+          <ul>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+          </ul>
+      </nav>
     </section>
-    <button class="btn_check">Run</button>
+    <!-- <button class="btn_check">Check</button> -->
   </header>
   <main>
     <section class="frame_edit">
       <div id="editor"></div>
     </section>
     <section class="frame_visual">
-      <iframe id="frame_result"></iframe>
+      <iframe id="frame_now"></iframe>
+      <iframe id="frame_check"></iframe>
+    </section>
+    <section class="task">
+      <h2>Задание</h2>
+      <p>
+        Вы должны исправить код так, чтобы получилось как в окне с образцом.
+      </p>
+      <button class="btn_check">Check</button>
     </section>
   </main>
   <script src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script>

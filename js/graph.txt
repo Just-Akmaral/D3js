@@ -1,17 +1,3 @@
-var code_area_html =
-"<!DOCTYPE html>\n" +
-"<head>\n" +
-"\t<title>D3js</title>\n" +
-"<style>.axis path {fill: none;stroke: grey;shape-rendering: crispEdges;}\n" +
-".axis text {}\n" +
-".tick line {stroke: grey;shape-rendering: crispEdges;}</style>\n"+
-"</head>\n" +
-"<body>\n" +
-"\t<div></div>\n" +
-"\t<script src='http://d3js.org/d3.v3.min.js'><\/script>\n" +
-"</body>\n" +
-"</html>";
-
 var code_area_js_graph =
 "var chart_area =\n" +
   "\td3\n" +
@@ -53,22 +39,3 @@ var code_area_js_graph =
 "\t.style('margin', '2px 0px')\n"+
 "\t.style('width', function(d,i) { return widthScale(d) + 'px'; } )\n" +
 "\t.text(function(d) { return d; });";
-
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/Dreamweaver");
-editor.getSession().setMode("ace/mode/javascript");
-editor.setValue(code_area_js_graph);
-
-
-var iframe = document.getElementById("frame_now");
-var doc = iframe.contentDocument || iframe.contentWindow.document;
-
-doc.open();
-doc.write(code_area_html+ "<script>" + editor.getValue() + "<\/script>");
-doc.close();
-
-editor.getSession().on("change", function() {
-    doc.open();
-    doc.write(code_area_html+ '<script>' + editor.getValue() + "<\/script>");
-    doc.close();
-});

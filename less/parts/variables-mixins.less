@@ -18,7 +18,7 @@
 
 /**-----------------BASE STYLE----------------------**/
 
-@font-family: 'Raleway', 'Arial', sans-serif;
+@font-family: 'Arial', sans-serif;
 @base-text-color: #adb7bd;//светлый
 @base-background-color: #1C2329;//темный
 
@@ -39,7 +39,6 @@
   font-weight: normal;
   font-style: normal;
   text-align: left;
-
 }
 
 .setTextSize(@size: @desktop-font-size; @height: @desktop-line-height; @weight: normal) {
@@ -48,7 +47,7 @@
  font-weight: @weight;
 }
 
-.setFlex(@direction: row; @content: center;) {
+.setFlex(@direction: row; @content: space-between;) {
   display: flex;
   justify-content: @content;
   flex-direction: @direction;

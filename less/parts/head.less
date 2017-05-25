@@ -2,9 +2,9 @@
 header{
   .setFlex();
   .setColorStyle(black);
-  justify-content: space-between;
   padding: 10px;
   .intro{
+    .setFlex(@direction: column;);
     .setPaddingLR(15px);
     h1{
       color: white;
@@ -14,33 +14,32 @@ header{
       text-transform: uppercase;
       text-align: left;
     }
-    p{
-      color: #f8f8f8;
-      .setTextSize(@size: @desktop-font-size-p; @height:  @desktop-line-height; @weight: 500);
-      margin: 0;
-      padding: 5px;
-      text-align: left;
-    }
-  }
-  .btn_check{
-    width: 100px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px;
-    font-size: 22px;
-    transition: .3s;
-    text-align: center;
-    background-color: @base-text-color;
-    color: @base-background-color;
-    border: 3px dashed transparent;
-      &:hover {
-        border: 3px dashed #cccccc;
-        color: @base-text-color;
-        background-color: @base-background-color;
+    .header-navigation{
+      ul{
+        .setFlex(@content: space-around;);
+        padding: 0;
+        margin: 0 auto;
+        background-color: red;
+        color: white;
+        li{
+          list-style-type: none;
+          padding: 5px;
+          &:hover{color: gray;}
+          &:active{color: white;}
+          a{
+            color: inherit;
+            text-decoration: none;
+            outline: none;
+            &.active{
+              color: @base-text-color;
+              &:hover{color: grey;}
+              &:active{opacity: 0.7;}
+            }
+          }
+        }
       }
     }
+  }
 }
 
 /*-------------END - HEAD--------------*/

@@ -199,7 +199,7 @@ html,
 body {
   color: black;
   background-color: white;
-  font-family: 'Raleway', 'Arial', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: 100%;
   font-weight: normal;
   font-style: normal;
@@ -232,14 +232,16 @@ body {
 /*-------------START - HEAD--------------*/
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   color: #adb7bd;
   background-color: #1c2329;
-  justify-content: space-between;
   padding: 10px;
 }
 header .intro {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -253,59 +255,102 @@ header .intro h1 {
   text-transform: uppercase;
   text-align: left;
 }
-header .intro p {
-  color: #f8f8f8;
-  font-size: 19px;
-  line-height: 24px;
-  font-weight: 500;
-  margin: 0;
-  padding: 5px;
-  text-align: left;
+header .intro .header-navigation ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 0;
+  margin: 0 auto;
+  background-color: red;
+  color: white;
 }
-header .btn_check {
+header .intro .header-navigation ul li {
+  list-style-type: none;
+  padding: 5px;
+}
+header .intro .header-navigation ul li:hover {
+  color: gray;
+}
+header .intro .header-navigation ul li:active {
+  color: white;
+}
+header .intro .header-navigation ul li a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+header .intro .header-navigation ul li a.active {
+  color: #adb7bd;
+}
+header .intro .header-navigation ul li a.active:hover {
+  color: grey;
+}
+header .intro .header-navigation ul li a.active:active {
+  opacity: 0.7;
+}
+/*-------------START - MAIN--------------*/
+main {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+main .frame_edit {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-grow: 2;
+  position: relative;
+}
+main .frame_edit #editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  box-sizing: border-box;
+}
+main .frame_visual {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-grow: 1;
+}
+main .frame_visual iframe {
+  min-height: 360px;
+  width: 50%;
+  background-color: white;
+}
+main .task {
+  width: 100%;
+  flex-grow: 2;
+  padding: 10px 25px;
+  color: black;
+  background-color: white;
+}
+main .task h2 {
+  font-size: 30px;
+  line-height: 26px;
+  font-weight: 100;
+  margin: 10px 0px;
+  padding: 5px 0px;
+}
+main .task .btn_check {
   width: 100px;
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
-  padding: 10px;
-  margin: 10px;
-  font-size: 22px;
+  padding: 5px;
+  margin: 5px 0px;
+  font-size: 19px;
   transition: .3s;
   text-align: center;
   background-color: #adb7bd;
   color: #1c2329;
   border: 3px dashed transparent;
 }
-header .btn_check:hover {
-  border: 3px dashed #cccccc;
+main .task .btn_check:hover {
   color: #adb7bd;
   background-color: #1c2329;
-}
-/*-------------START - MAIN--------------*/
-main {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-}
-main .init_data {
-  width: 20%;
-}
-main .frame_edit,
-main .frame_visual {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-direction: column;
-}
-main .frame_edit #editor {
-  min-height: 300px;
-  box-sizing: border-box;
-  width: 480px;
-}
-main .frame_visual {
-  width: 100%;
-}
-main .frame_visual iframe {
-  height: 100%;
-  background-color: white;
 }

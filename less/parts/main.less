@@ -1,29 +1,53 @@
 /*-------------START - MAIN--------------*/
 main{
   .setFlex();
-.init_data{
-  width: 20%;
-}
-.frame{
-    &_edit,&_visual{
+  flex-wrap: wrap;
+  .frame_edit{
       .setFlex();
-      flex-direction: column;
-    }
-    &_edit{
-      #editor {
-        min-height: 300px;
-        box-sizing: border-box;
-        width: 480px;
+      flex-grow: 2;
+      position: relative;
+      #editor{
+        .zero-centered();
+       box-sizing: border-box;
       }
+}
+    .frame_visual{
+       .setFlex();
+       flex-grow: 1;
+       iframe{
+         min-height: 360px;
+         width: 50%;
+         background-color: white;
+       }
     }
-    &_visual{
-      width: 100%;
-      iframe{
-      height: 100%;
-      background-color: white;
-      }
-    }
+.task{
+  width: 100%;
+  flex-grow: 2;
+  padding: 10px 25px;
+    .setColorStyle(white);
+  h2{
+    .setTextSize(@size: @desktop-font-size-h; @height: @desktop-line-height-h; @weight: 100);
+    margin: 10px 0px;
+    padding: 5px 0px;
   }
-
+  .btn_check{
+    width: 100px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px 0px;
+    font-size: @desktop-font-size-p;
+    transition: .3s;
+    text-align: center;
+    background-color: @base-text-color;
+    color: @base-background-color;
+    border: 3px dashed transparent;
+      &:hover {
+        color: @base-text-color;
+        background-color: @base-background-color;
+      }
+    }
+}
 }
 /*-------------END - MAIN--------------*/
