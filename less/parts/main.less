@@ -2,52 +2,81 @@
 main{
   .setFlex();
   flex-wrap: wrap;
-  .frame_edit{
-      .setFlex();
-      flex-grow: 2;
-      position: relative;
-      #editor{
-        .zero-centered();
-       box-sizing: border-box;
+  .frame{
+    &_edit,&_visual{
+      span {
+        display: inline-block;
+        padding: 2px 4px;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 14px;
+        color: #fff;
+        white-space: nowrap;
+        position: absolute;
+        z-index: 500;
+        right: 20px;
+        margin: 5px;
+        background-color: #ee5f5b;
       }
-}
-    .frame_visual{
-       .setFlex();
-       flex-grow: 1;
-       iframe{
-         min-height: 360px;
-         width: 50%;
-         background-color: white;
-       }
     }
-.task{
-  width: 100%;
-  flex-grow: 2;
-  padding: 10px 25px;
-    .setColorStyle(white);
-  h2{
-    .setTextSize(@size: @desktop-font-size-h; @height: @desktop-line-height-h; @weight: 100);
-    margin: 10px 0px;
-    padding: 5px 0px;
+    &_edit{
+        .setFlex();
+        flex-grow: 2;
+        position: relative;
+        min-height: 360px;
+        #editor{
+          .zero-centered();
+        }
+      }
+    &_visual{
+         .setFlex();
+         flex-grow: 1;
+         iframe{
+           min-height: 360px;
+           width: 50%;
+           background-color: white;
+         }
+    }  
   }
-  .btn_check{
-    width: 100px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    padding: 5px;
-    margin: 5px 0px;
-    font-size: @desktop-font-size-p;
-    transition: .3s;
-    text-align: center;
-    background-color: @base-text-color;
-    color: @base-background-color;
-    border: 3px dashed transparent;
-      &:hover {
-        color: @base-text-color;
-        background-color: @base-background-color;
+  .task{
+    width: 100%;
+    flex-grow: 2;
+    padding: 10px 25px;
+    .setColorStyle(white);
+    h2{
+        .setTextSize(@size: @desktop-font-size-h; @height: @desktop-line-height-h; @weight: 100);
+        margin: 10px 0px;
+        padding: 5px 0px;
       }
+    .btn{
+        &_check, &_theory{
+          min-width: 120px;
+          cursor: pointer;
+          border-radius: 5px;
+          text-decoration: none;
+          padding: 5px;
+          margin: 5px 0px;
+          font-size: @desktop-font-size-p;
+          transition: .3s;
+          text-align: center;
+          background-color: @base-text-color;
+          color: @base-background-color;
+          border: 3px dashed transparent;
+            &:hover {
+              color: @base-text-color;
+              background-color: @base-background-color;
+            }
+        }
+      }
+    #result{
+      display: inline-block;
+      white-space: nowrap;
+      background-color: #ee5f5b;//#62c462;
+      font-size: 12px;
+      color: #fff;
+      text-align: center;
+      width: 170px;
     }
-}
+  }
 }
 /*-------------END - MAIN--------------*/
