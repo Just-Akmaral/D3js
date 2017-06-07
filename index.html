@@ -23,18 +23,20 @@
   </header>
   <main>
     <section class="frame_edit">
+      <span class="label-info">JS</span>
       <div id="editor"></div>
     </section>
     <section class="frame_visual">
-      <iframe id="frame_now"></iframe>
-      <iframe id="frame_true"></iframe>
+      <span class="label-info">Образец</span>
+      <iframe id="frame_browser"></iframe>
+      <iframe id="frame_original"></iframe>
     </section>
     <section class="task">
       <h2>Задание</h2>
-      <p>
-        Вы должны исправить код так, чтобы получилось как в окне с образцом.
-      </p>
-      <button class="btn_check" onclick="toCheckScreen()">Check</button>
+      <p>Вы должны исправить код так, чтобы получилось как в окне с образцом.</p>
+      <button class="btn_theory">Теория</button>
+      <button class="btn_check" onclick="toCheckScreen()">Проверить</button>
+      <div id="result">холодно</div>
     </section>
   </main>
   <script src="js/ace.js"></script>

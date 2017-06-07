@@ -12,7 +12,7 @@ var code_area_html =
 "</body>\n" +
 "</html>";
 
-var code_area_js_graph =
+var code_area_js =
 "var chart_area =\n" +
   "\td3\n" +
   "\t.select('body') \n" +
@@ -60,13 +60,13 @@ var code_area_js_graph =
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/Dreamweaver");
 editor.getSession().setMode("ace/mode/javascript");
-editor.setValue(code_area_js_graph);
+editor.setValue(code_area_js);
 
-var iframeNow = document.getElementById("frame_now");
-var toCheckDoc = iframeNow.contentDocument || iframeNow.contentWindow.document;
+var iframeBrowser = document.getElementById("frame_browser");
+var toCheckDoc = iframeBrowser.contentDocument || iframeBrowser.contentWindow.document;
 
-var iframeTrue = document.getElementById("frame_true");
-var trueDoc = iframeTrue.contentDocument || iframeTrue.contentWindow.document;
+var iframeOriginal = document.getElementById("frame_original");
+var trueDoc = iframeOriginal.contentDocument || iframeOriginal.contentWindow.document;
 var trueCode="var chart_area =d3.select('body').append('div').classed('chart_area', true); "+
 "var data = []; for (var i=0; i<10; i++){data.push(i);}"+
 "var CHART_WIDTH = 400, CHART_HEIGHT = 300;"+
@@ -103,11 +103,13 @@ function toCheckScreen(){
         imgTrue = canvasTrue.toDataURL("image/png")
         //проводим сравнение
         resemble(imgTrue).compareTo(imgCheck).onComplete(function (data) {
-            var masmatch_percentage = data.rawMisMatchPercentage;
-            if (masmatch_percentage == 0) {
-                 alert("Ok");
-            } else {
-                 alert("Not ok");
+            var percentage = 100 - Math.ceil(data.rawMisMatchPercentage);
+            var result = document.getElementById('result');
+            result.innerHTML = percentage + "%";
+            if (percentage >= 80) {
+              result.style.backgroundColor = '#62c462';
+            }else {
+              result.style.backgroundColor = '#ee5f5b';
             }
          });
         }
