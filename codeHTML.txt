@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+\t<title>D3js</title>
+<style>.axis path {fill: none;stroke: grey;shape-rendering: crispEdges;}
+.axis text {}
+.tick line {stroke: grey;shape-rendering: crispEdges;}
+</style>
+</head>
+<body>
+<div></div>
+<script src='http://d3js.org/d3.v3.min.js'><\/script>
+</body>
+</html>
