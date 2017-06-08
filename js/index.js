@@ -1,16 +1,7 @@
 var code_area_html =
-"<!DOCTYPE html>\n" +
-"<head>\n" +
-"\t<title>D3js</title>\n" +
-"<style>.axis path {fill: none;stroke: grey;shape-rendering: crispEdges;}\n" +
-".axis text {}\n" +
-".tick line {stroke: grey;shape-rendering: crispEdges;}</style>\n"+
-"</head>\n" +
-"<body>\n" +
-"\t<div></div>\n" +
-"\t<script src='js/d3js.js'><\/script>\n" +
-"</body>\n" +
-"</html>";
+"<!DOCTYPE html><head><style>.axis path {fill: none;stroke: grey;shape-rendering: crispEdges;}.axis text {}" +
+".tick line {stroke: grey;shape-rendering: crispEdges;}</style>"+
+"</head><body><div></div><script src='js/d3js.js'></script></body></html>";
 
 var code_area_js =
 "var chart_area =\n" +
@@ -60,11 +51,14 @@ editor.getSession().setMode("ace/mode/javascript");
 editor.setValue(code_area_js);
 
 var iframeBrowser = document.getElementById("frame_browser");
-var toCheckDoc = iframeBrowser.contentDocument || iframeBrowser.contentWindow.document;
+var browserDoc = iframeBrowser.contentDocument || iframeBrowser.contentWindow.document;
 
 var iframeOriginal = document.getElementById("frame_original");
-var trueDoc = iframeOriginal.contentDocument || iframeOriginal.contentWindow.document;
-var trueCode="var chart_area =d3.select('body').append('div').classed('chart_area', true); "+
+var originalDoc = iframeOriginal.contentDocument || iframeOriginal.contentWindow.document;
+
+var variants = {
+  1:{
+    originalCode: "var chart_area =d3.select('body').append('div').classed('chart_area', true); "+
 "var data = []; for (var i=0; i<10; i++){data.push(i);}"+
 "var CHART_WIDTH = 400, CHART_HEIGHT = 300;"+
 "var widthScale = d3.scale.linear().domain([d3.min(data, function(d, i) {return d;}),"+
@@ -72,30 +66,41 @@ var trueCode="var chart_area =d3.select('body').append('div').classed('chart_are
 "var hAxis_area =d3.select('body').append('div').style('position', 'absolute');"+
 "var ticks = widthScale.ticks(10);"+
 "hAxis_area.selectAll('span').data(ticks).enter().append('span').style('position', 'absolute').style('left', function(d,i) { return widthScale(d) + 'px'; } ).text(String);"+
-"chart_area.selectAll('div').data(data).enter().append('div').classed('bar_area', true).style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; }).style('height', '20px').style('margin', '2px 0px').style('width', function(d,i) { return widthScale(d) + 'px'; } ).text(function(d) { return d; });";
+"chart_area.selectAll('div').data(data).enter().append('div').classed('bar_area', true).style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; }).style('height', '20px').style('margin', '2px 0px').style('width', function(d,i) { return widthScale(d) + 'px'; } ).text(function(d) { return d; });"
+  },
+  2:{
+    originalCode:"var data = [1, 2, 3, 4];d3.select('body').selectAll('p').data(data).enter().append('p').text(function(d) { return d; });"
+  }
+};
 
 
-toCheckDoc.open();
-toCheckDoc.write(code_area_html+ "<script>" + editor.getValue() + "<\/script>");
-toCheckDoc.close();
+//////////////////////////////Добавление в редактор нужного кода
+browserDoc.open();
+browserDoc.write(code_area_html+ "<script>" + editor.getValue() + "<\/script>");
+browserDoc.close();
 
 editor.getSession().on("change", function() {
-    toCheckDoc.open();
-    toCheckDoc.write(code_area_html+ '<script>' + editor.getValue() + "<\/script>");
-    toCheckDoc.close();
+    browserDoc.open();
+    browserDoc.write(code_area_html+ '<script>' + editor.getValue() + "<\/script>");
+    browserDoc.close();
 });
 
-trueDoc.open();
-trueDoc.write(code_area_html+ "<script>" + trueCode + "<\/script>");
-trueDoc.close();
 
+////////////////////////////Отображаем образец
+function showOriginalFrame(i){
+  originalDoc.open();
+  originalDoc.write(code_area_html+ "<script>" + variants[i].originalCode + "<\/script>");
+  originalDoc.close();
+}
+
+//////////////////////Сравнение картинок
 function toCheckScreen(){
   var imgCheck,imgTrue;
-  html2canvas(toCheckDoc.body, {
+  html2canvas(browserDoc.body, {
     onrendered: function(canvasCheck) {
       imgCheck = canvasCheck.toDataURL("image/png")
       //делаем скрин тру
-      html2canvas(trueDoc.body, {
+      html2canvas(originalDoc.body, {
         onrendered: function(canvasTrue) {
         imgTrue = canvasTrue.toDataURL("image/png")
         //проводим сравнение
@@ -115,6 +120,8 @@ function toCheckScreen(){
   });
 }
 
+
+//////////////////////Переключение теории
 function clickInTask(elem) {
     this.toShowTheory = function() {
       theory_article.style.display = "block";
@@ -136,3 +143,24 @@ function clickInTask(elem) {
     };
   }
   new clickInTask(task);
+
+///////////////////////Переключение активного меню
+var controls = document.querySelectorAll('.header-navigation ul li a');
+for (var i = 0; i < controls.length; i++) {
+    clickControl(controls[i]);
+}
+function toggleTask(control) {
+    for (var i = 0; i < controls.length; i++) {
+        controls[i].classList.remove('active');
+    }
+    control.classList.add('active');
+    var action = control.getAttribute('data-task');
+    showOriginalFrame(action);
+}
+function clickControl(control) {
+    control.addEventListener('click', function() {
+        toggleTask(control);
+    });
+}
+var defaultTask = document.querySelector('.header-navigation ul li:first-of-type a');
+toggleTask(defaultTask);
