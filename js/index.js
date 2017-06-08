@@ -14,10 +14,7 @@ var code_area_html =
 
 var code_area_js =
 "var chart_area =\n" +
-  "\td3\n" +
-  "\t.select('body') \n" +
-  "\t.append('div')    \n" +
-  "\t.classed('chart_area', true); \n" +
+  "d3.select('body').append('div').classed('chart_area', true); \n" +
   "\n" +
 "var data = []; \n" +
 "//добавьте в data необходимые данные любым путем\n"+
@@ -117,3 +114,25 @@ function toCheckScreen(){
     }
   });
 }
+
+function clickInTask(elem) {
+    this.toShowTheory = function() {
+      theory_article.style.display = "block";
+    };
+    this.toHideTheory = function() {
+      theory_article.style.display = "none";
+    };
+    this.toCheckScreen = function() {
+      toCheckScreen();
+    };
+    var self = this;
+    var theory_article = document.getElementById("theory_article");
+    elem.onclick = function(e) {
+      var target = e.target;
+      var action = target.getAttribute('data-action');
+      if (action) {
+        self[action]();
+      }
+    };
+  }
+  new clickInTask(task);

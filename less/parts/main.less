@@ -36,7 +36,7 @@ main{
            width: 50%;
            background-color: white;
          }
-    }  
+    }
   }
   .task{
     width: 100%;
@@ -48,8 +48,7 @@ main{
         margin: 10px 0px;
         padding: 5px 0px;
       }
-    .btn{
-        &_check, &_theory{
+    .btn,label{
           min-width: 120px;
           cursor: pointer;
           border-radius: 5px;
@@ -66,16 +65,32 @@ main{
               color: @base-text-color;
               background-color: @base-background-color;
             }
-        }
       }
     #result{
-      display: inline-block;
-      white-space: nowrap;
+      display: block;
+      // white-space: nowrap;
       background-color: #ee5f5b;//#62c462;
       font-size: 12px;
       color: #fff;
       text-align: center;
       width: 170px;
+    }
+  }
+
+#theory_article{
+    display: none;
+    z-index: 1000;
+    .zero-centered();
+    position: fixed;
+    width: 50%;
+    height: 80%;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+    code,pre{
+      background-color:rgba(173, 183, 189,0.1);
     }
   }
 }
