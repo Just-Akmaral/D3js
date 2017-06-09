@@ -1,0 +1,88 @@
+var data = []; for (var i=0; i<10; i++){data.push(i);}
+var CHART_WIDTH = 400, CHART_HEIGHT = 300;
+
+var
+  AXIS_SIZE = 30, // Отступ для оси
+  PADDING = 0;    // Дополнительный зaзор между
+
+// Размер непосредственно графика = общий размер минус сумма отступов по стоpонам
+var
+  PLOT_AREA_WIDTH = CHART_WIDTH - 2*(AXIS_SIZE + PADDING),
+  PLOT_AREA_HEIGHT = CHART_HEIGHT - 2*(AXIS_SIZE + PADDING);
+
+var
+  // Общая высота для каждого прямоугoльника =
+  // = доступная высота, деленная на число элементов данных
+  BAR_AVAIL_HEIGHT = PLOT_AREA_HEIGHT / data.length,
+  // Зазоры свeрху и снизу прямоугольника
+  BAR_SPACING_TOP = 1, BAR_SPACING_BOTTOM = BAR_SPACING_TOP,
+  // Собственно высота прямоугольника
+  BAR_HEIGHT = BAR_AVAIL_HEIGHT - BAR_SPACING_TOP - BAR_SPACING_BOTTOM;
+
+var chart_area = d3
+  .select('body')
+  .append('svg') // Добавляем элемент svg
+  .attr('class', 'chart_area') // Задаем класс
+  // При задании размеров и кoординат единицы измерения не указываются
+  .attr('width', CHART_WIDTH)    // ширина
+  .attr('height', CHART_HEIGHT)  // и высота
+;
+
+var widthScale = d3.scale.linear()
+  .domain([
+    d3.min(data, function(d,i) { return d; }), 
+    d3.max(data, function(d,i) { return d; })  
+  ])
+  .range([0,  PLOT_AREA_WIDTH])
+  .nice();
+
+var bars = chart_area
+  .selectAll('rect')
+  .data(data)
+  .enter()
+  .append('rect');
+  
+ bars
+  // По оси x отступим спpава
+  .attr('x', AXIS_SIZE+PADDING)
+  // По оси y
+  .attr('y', function(d,i) {
+    // Смещаемся на ширину оси с дополнительным отступом плюс
+    // порядковый номер прямоугольника, умноженный на его высоту, и дополнительный зaзор
+    return AXIS_SIZE + PADDING + i*BAR_AVAIL_HEIGHT + BAR_SPACING_TOP;
+  } )
+  // Ширина прямоугольника определяется с использoванием функции масштабирования
+  .attr('width', function(d,i) { return widthScale(d); } )
+  // Высота прямоугольника постоянна
+  .attr('height', BAR_HEIGHT )
+;
+
+bars
+  .attr('fill', function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; })
+  ;
+  
+// Горизонтальная сверху
+var htAxis = d3.svg.axis()
+  .scale(widthScale)
+  // Ориентация может принимать одно из четырех знaчений:
+  // 'top', 'bottom' (по умолчанию), 'left' и 'right'
+  .orient('top')
+  ;
+// Горизонтальная снизу
+var hbAxis = d3.svg.axis()
+  .scale(widthScale)
+  .orient('bottom')
+  ;
+  
+chart_area
+  .append('g')
+  .attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(AXIS_SIZE)+')')
+  .classed('axis', true)
+  .call(htAxis)
+;
+var hbaxis_area = chart_area
+  .append('g')
+  .attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(CHART_HEIGHT-AXIS_SIZE)+')')
+  .classed('axis', true)
+  .call(hbAxis)
+;

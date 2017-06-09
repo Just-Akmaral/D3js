@@ -1,0 +1,6 @@
+var data = [10,8,6,4,2,1,3,5,7,9];
+d3.select('body')
+.selectAll('p')
+.data(data)
+.enter().append('p')
+.text(function(d) { return d; });
