@@ -9,17 +9,17 @@
 </head>
 <body>
   <header>
-    <section class="intro">
       <h1>Обучение D3.js</h1>
       <nav class="header-navigation">
+        <input type="checkbox" id="menu-task">
+        <label class="task-navigation" for="menu-task">Задания</label>
           <ul>
-            <li><a href="#" data-task="1">1</a></li>
-            <li><a href="#" data-task="2">2</a></li>
-            <li><a href="#" data-task="3">3</a></li>
-            <li><a href="#" data-task="4">4</a></li>
+            <li><a href="#" data-task="1">1 - привязка</a></li>
+            <li><a href="#" data-task="2">2 - линейная диаграмма</a></li>
+            <li><a href="#" data-task="3">3 - координатные оси</a></li>
+            <li><a href="#" data-task="4">4 - круговая диаграмма</a></li>
           </ul>
       </nav>
-    </section>
   </header>
   <main>
     <section class="frame_edit">
@@ -33,10 +33,11 @@
       <iframe id="frame_original"></iframe>
     </section>
     <section class="task" id="task">
-      <h2>Задание</h2>
-      <p>Вы должны исправить код так, чтобы получилось как в окне с образцом. Желательно проходить задания по порядку, указанному вверху страницы.</p>
+      <!-- <h2>Задание</h2> -->
       <button class="btn" data-action="toShowTheory">Теория</button>
       <button class="btn" data-action="toCheckScreen">Проверить</button>
+      <h2>Исправьте код так, чтобы получилась картинка как в окне с образцом</h2>
+
       <div id="result">:(</div>
       <div id="theory_article">
         <span class="close-theory" data-action="toHideTheory">×</span>

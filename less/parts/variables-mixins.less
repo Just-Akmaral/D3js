@@ -19,12 +19,12 @@
 /**-----------------BASE STYLE----------------------**/
 
 @font-family: 'Arial', sans-serif;
-@base-text-color: #adb7bd;//светлый
-@base-background-color: #1C2329;//темный
+@base-text-color:#108ee9 ;//светлый #adb7bd
+@base-background-color: #181a1c;//темный#1C2329
 
 /*------------------MIXINS---------------*/
 
- .setColorStyle(@color) when (lightness(@color)<=50%){
+.setColorStyle(@color) when (lightness(@color)<=50%){
   color: @base-text-color;
   background-color: @base-background-color;
 }
@@ -47,10 +47,11 @@
  font-weight: @weight;
 }
 
-.setFlex(@direction: row; @content: space-between;) {
+.setFlex(@direction: row; @content: space-between; @align-items: center;) {
   display: flex;
   justify-content: @content;
   flex-direction: @direction;
+  align-items: @align-items;
 }
 
 .zero-centered() {

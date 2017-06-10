@@ -14,15 +14,15 @@ main{
         white-space: nowrap;
         position: absolute;
         z-index: 500;
-        right: 2%;
+        right: 22px;
         margin: 5px;
-        background-color: #ee5f5b;
+        background-color: @base-text-color;
         &_result{right: 32%;}
         &_pattern{right: 0.5%;}
       }
     }
     &_edit{
-        .setFlex();
+        .setFlex(@align-items: flex-start;);
         flex-grow: 2;
         position: relative;
         min-height: 360px;
@@ -31,7 +31,7 @@ main{
         }
       }
     &_visual{
-         .setFlex();
+         .setFlex(@align-items: flex-start;);
          flex-grow: 1;
          iframe{
            min-height: 360px;
@@ -46,7 +46,7 @@ main{
     padding: 10px 25px;
     .setColorStyle(white);
     h2{
-        .setTextSize(@size: @desktop-font-size-h; @height: @desktop-line-height-h; @weight: 100);
+        .setTextSize(@size: @desktop-font-size-p; @height: @desktop-font-size-p; @weight: 100);
         margin: 10px 0px;
         padding: 5px 0px;
       }
@@ -60,7 +60,7 @@ main{
           font-size: @desktop-font-size-p;
           transition: .3s;
           text-align: center;
-          background-color: @base-text-color;
+          background-color: #adb7bd;
           color: @base-background-color;
           border: 3px dashed transparent;
             &:hover {
