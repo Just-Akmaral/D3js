@@ -18,7 +18,7 @@ var chart_area = d3
   .select('body')
   .append('svg') 
   .attr('class', 'chart_area')
-    .attr('width', CHART_WIDTH)  
+  .attr('width', CHART_WIDTH)  
   .attr('height', CHART_HEIGHT)
 ;
 

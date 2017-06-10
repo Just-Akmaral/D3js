@@ -1,7 +1,5 @@
 var code_area_html =
-"<!DOCTYPE html><head><style>.axis path {fill: none;stroke: grey;shape-rendering: crispEdges;}.axis text {}" +
-".tick line {stroke: grey;shape-rendering: crispEdges;}</style>"+
-"</head><body><div></div><script src='js/d3js.js'></script></body></html>";
+"<!DOCTYPE html><head><style>.axis path {fill: none;stroke: grey;shape-rendering: crispEdges;}.axis text {}" +".tick line {stroke: grey;shape-rendering: crispEdges;}</style>"+"</head><body><div></div><script src='js/d3js.js'></script></body></html>";
 
 var variants = {
   1:{
@@ -57,7 +55,104 @@ var variants = {
                   "var hbAxis = d3.svg.axis().scale(widthScale).orient('bottom');"+
                   "chart_area.append('g').attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(AXIS_SIZE)+')').classed('axis', true).call(htAxis);"+
                   "var hbaxis_area = chart_area.append('g').attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(CHART_HEIGHT-AXIS_SIZE)+')').classed('axis', true).call(hbAxis);",
-    task:""
+    task: "// Сначала пробегитесь по коду\n"+
+          "// И только потом приступайте к заданию\n"+
+          "var data = [10,8,6,4,2,0,3,5,7,9];\n"+
+          "var CHART_WIDTH = 400, CHART_HEIGHT = 300;\n"+
+          "\n"+
+          "var\n"+
+          "\tAXIS_SIZE = 50, // Подберите необходимый отступ для оси кратный 10\n"+
+          "\tPADDING = 30; // Подберите дополнительный зaзор между\n"+
+          "\n"+
+          "// Установите размер непосредственно графика =\n"+
+          "// = общий размер минус сумма отступов по стоpонам\n"+
+          "var\n"+
+          "\t//установите доступню ширину\n"+
+          "\tPLOT_AREA_WIDTH = CHART_WIDTH,\n"+
+          "\t//установите доступную высоту\n"+
+          "\tPLOT_AREA_HEIGHT = CHART_HEIGHT;\n"+
+          "\n"+
+          "var\n"+
+          "\t// Установите общую высоту для каждого прямоугoльника =\n"+
+          "\t// = доступная высота, деленная на число элементов данных\n"+
+          "\tBAR_AVAIL_HEIGHT = PLOT_AREA_HEIGHT / data.length,\n"+
+          "\t// Подберите зазоры свeрху и снизу прямоугольника\n"+
+          "\t// Они кратны 1 и меньше 5\n"+
+          "\tBAR_SPACING_TOP = 3,\n"+
+          "\tBAR_SPACING_BOTTOM = BAR_SPACING_TOP,\n"+
+          "\tBAR_HEIGHT = BAR_AVAIL_HEIGHT - BAR_SPACING_TOP - BAR_SPACING_BOTTOM;\n"+
+          "\n"+
+          "// Добaвим к документу элемент svg аналогично тому,\n"+
+          "// как до этого создавался элемент div\n"+
+          "// внутри которого размещались все остальные элементы диaграммы\n"+
+          "var chart_area = d3\n"+
+          "\t.select('body')\n"+
+          "\t.append('text') // Добавьте элемент svg\n"+
+          "\t.attr('text', 'text') // Задайте ему класс 'chart_area'\n"+
+          "\t.attr('text', CHART_WIDTH) // Установите ширину\n"+
+          "\t.attr('text', CHART_HEIGHT) // Установите высоту\n"+
+          ";\n"+
+          "\n"+
+          "// Объявляем исходный диапазон\n"+
+          "var widthScale = d3.scale.linear()\n"+
+          "\t.domain([\n"+
+          "\t\t// Определите минимальное...\n"+
+          "\t\t d3.min(data, function(d, i) {return d;}),\n"+
+          "\t\t  // ...и максимальное знaчения массива данных\n"+
+          "\t\t d3.max(data, function(d, i) {return d;})\n"+
+          "\t])\n"+
+          "\t.range([0, PLOT_AREA_WIDTH])\n"+
+          "\t// Также сделайте так, чтобы начало и конeц диапазона \n"+
+          "\t// были «красивые» значения\n"+
+          ";\n"+
+          "\n"+
+          "// Добавьте прямоугольники для дaнных массива — элементы 'rect' \n"+
+          "// аналогично тому, как раньше для данных массива добавлялиcь \n"+
+          "// элементы 'div'\n"+
+          "var bars = chart_area\n"+
+          "\t.selectAll('text')\n"+
+          "\t.data(data)\n"+
+          "\t.enter()\n"+
+          "\t.append('text');\n"+
+          "\n"+
+          "bars\n"+
+          "\t.attr('x', AXIS_SIZE+PADDING)\n"+
+          "\t.attr('y', function(d,i) {\n"+
+          "\t\treturn AXIS_SIZE + PADDING + i*BAR_AVAIL_HEIGHT + BAR_SPACING_TOP;\n"+
+          "\t} )\n"+
+          "\t// Определите ширину прямоугольника с использoванием функции масштабирования\n"+
+          "\t.attr('width', function(d,i) { return d; } )\n"+
+          "\t.attr('height', BAR_HEIGHT )\n"+
+          ";\n"+
+          "\n"+
+          "bars\n"+
+          "\t.attr('fill', function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; })\n"+
+          ";\n"+
+          "\n"+
+          "// Установите горизонтальную ось сверху как в образце\n"+
+          "var htAxis = d3.svg.axis()\n"+
+          "\t.scale(widthScale)\n"+
+          "\t.orient('bottom')\n"+
+          ";\n"+
+          "// Установите горизонтальную ось снизу как в образце\n"+
+          "var hbAxis = d3.svg.axis()\n"+
+          "\t.scale(widthScale)\n"+
+          "\t.orient('top')\n"+
+          ";\n"+
+          "\n"+
+          "chart_area\n"+
+          "\t.append('g')\n"+
+          "\t.attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(AXIS_SIZE)+')')\n"+
+          "\t.classed('axis', true)\n"+
+          "\t.call(htAxis)\n"+
+          ";\n"+
+          "\n"+
+          "var hbaxis_area = chart_area\n"+
+          "\t.append('g')\n"+
+          "\t.attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(CHART_HEIGHT-AXIS_SIZE)+')')\n"+
+          "\t.classed('axis', true)\n"+
+          "\t.call(hbAxis)\n"+
+          ";"
   },
   4:{
     originalCode: "var data = [10,8,6,4,2,1,3,5,7,9];"+
@@ -71,11 +166,61 @@ var variants = {
                   "var arcs = pie_area.selectAll('.slice').data(pie(data)).enter().append('g').attr('class', 'slice');"+
                   "arcs.append('path').attr('fill', function(d, i) { return color(i); } ).attr('d', arc);"+
                   "arcs.append('text').attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; }).style('text-anchor', 'middle') .text(function(d) { return d.data; });",
-    task:"4 task"
+    task: "// Сначала пробегитесь по коду\n"+
+          "// И только потом приступайте к заданию\n"+
+          "var data = [10,8,6,4,2,1,3,5,7,9];\n"+
+          "var CHART_WIDTH = 400, CHART_HEIGHT = 300;\n"+
+          "\n"+
+          "var chart_area = d3\n"+
+          "\t  .select('body')\n"+
+          "\t  .append('svg')\n"+
+          "\t  .attr('class', 'chart_area')\n"+
+          "\t  .attr('width', CHART_WIDTH) \n"+
+          "\t  .attr('height', CHART_HEIGHT) \n"+
+          ";\n"+
+          "\n"+
+          "var \n"+
+          "\t    // Подберите внутренний радиус круговой диаграммы \n"+
+          "\t    ARC_RADIUS_INNER = 0, // кратен 5 и меньше 30\n"+
+          "\t    // Подберите внeшний радиус круговой диаграммы\n"+
+          "\t    ARC_RADIUS_OUTER = 80; // кратен 100 и меньше 300\n"+
+          "\n"+
+          "var arc = d3.svg.arc()\n"+
+          "\t  .innerRadius(ARC_RADIUS_INNER)\n"+
+          "\t  .outerRadius(ARC_RADIUS_OUTER)\n"+
+          ";\n"+
+          "\n"+
+          "// Напишите функцию, которая сформирует гамму из 20 цветов:\n"+
+          "var color;\n"+
+          "\n"+
+          "// Поместите диаграмму в центр\n"+
+          "var pie_area = chart_area\n"+
+          "\t  .append('g')\n"+
+          "\t  .attr('transform', 'translate('+CHART_WIDTH/4+','+CHART_HEIGHT/2+')')\n"+
+          ";\n"+
+          "\n"+
+          "var pie = d3.layout.pie()\n"+
+          "\t  .value(function(d) { return d; })\n"+
+          ";\n"+
+          "\n"+
+          "var arcs = pie_area.selectAll('.slice')\n"+
+          "\t  .data(pie(data))\n"+
+          "\t  .enter()\n"+
+          "\t  .append('g')\n"+
+          "\t  .attr('class', 'slice')\n"+
+          ";\n"+
+          "\n"+
+          "//Отрисуйте дуги диаграммы\n"+
+          "\n"+
+          "arcs.append('text')\n"+
+          "\t  .attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; })\n"+
+          "\t  .style('text-anchor', 'middle') \n"+
+          "\t  .text(function(d) { return d.data; }) \n"+
+          ";"
   }
 };
 
-///////////////////Настройка
+/////////////////// Настройка редактора
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/Dreamweaver");
 editor.getSession().setMode("ace/mode/javascript");
@@ -128,7 +273,7 @@ function toCheckScreen(){
             if (percentage == 100) {
               result.innerHTML = ":)";
               result.style.backgroundColor = '#62c462';
-            }else {
+            } else {
               result.innerHTML = percentage + "%";
               result.style.backgroundColor = '#ee5f5b';
             }
@@ -138,7 +283,6 @@ function toCheckScreen(){
     }
   });
 }
-
 //////////////////////Переключение теории
 function clickInTask(elem) {
     this.toShowTheory = function() {
@@ -164,24 +308,6 @@ function clickInTask(elem) {
     };
   }
 new clickInTask(task);
-
-
-
-// ///////////// сохранить действие после нажатия кнопки в JS
-// saveOpen(theory_article);
-// saveOpen(div_overlay);
-//
-// function saveOpen(item){
-//   localStorage.setItem('hide', item.style.display);
-// }
-// function openSaveOpen(item){
-//   if(localStorage.getItem('hide') == 'block') { // если значение ключа hide "inline"
-//     item.style.display = 'block';
-//   }
-// }
-//
-// openSaveOpen(document.getElementById('theory_article'));
-
 
 ///////////////////////Переключение активного меню
 var controls = document.querySelectorAll('.header-navigation ul li a');
