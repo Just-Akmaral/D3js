@@ -228,6 +228,9 @@ editor.getSession().setMode("ace/mode/javascript");
 function setTask(i){
   editor.setValue(variants[i].task);
 }
+function getCode(){
+  return editor.getValue();
+}
 
 var iframeBrowser = document.getElementById("frame_browser");
 var browserDoc = iframeBrowser.contentDocument || iframeBrowser.contentWindow.document;
@@ -238,12 +241,12 @@ var originalDoc = iframeOriginal.contentDocument || iframeOriginal.contentWindow
 
 //////////////////////////////Добавление в редактор нужного кода
 browserDoc.open();
-browserDoc.write(code_area_html+ "<script>" + editor.getValue() + "</script>");
+browserDoc.write(code_area_html+ "<script>" + getCode() + "</script>");
 browserDoc.close();
 
 editor.getSession().on("change", function() {
     browserDoc.open();
-    browserDoc.write(code_area_html+ '<script>' + editor.getValue() + "</script>");
+    browserDoc.write(code_area_html+ '<script>' + getCode() + "</script>");
     browserDoc.close();
 });
 
@@ -269,13 +272,12 @@ function toCheckScreen(){
         resemble(imgTrue).compareTo(imgCheck).onComplete(function (data) {
             var percentage = 100 - Math.ceil(data.rawMisMatchPercentage);
             var result = document.getElementById('result');
-
-            if (percentage == 100) {
-              result.innerHTML = ":)";
-              result.style.backgroundColor = '#62c462';
-            } else {
-              result.innerHTML = percentage + "%";
-              result.style.backgroundColor = '#ee5f5b';
+            result.innerHTML = "Результат: " + percentage + "%";
+            result.style.backgroundColor = '#ee5f5b';
+            if ((percentage<=80)&&(getCode()=="")){
+              result.innerHTML = "Холодные льды Арктики";
+            } else if (percentage==100) {
+              result.style.backgroundColor = '#62c462';//зеленый
             }
          });
         }

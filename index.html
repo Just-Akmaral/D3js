@@ -11,14 +11,15 @@
   <header>
       <h1>Обучение D3.js</h1>
       <nav class="header-navigation">
-        <input type="checkbox" id="menu-task">
-        <label class="task-navigation" for="menu-task">Задания</label>
-          <ul>
-            <li><a href="#" data-task="1">1 - привязка</a></li>
-            <li><a href="#" data-task="2">2 - линейная диаграмма</a></li>
-            <li><a href="#" data-task="3">3 - координатные оси</a></li>
-            <li><a href="#" data-task="4">4 - круговая диаграмма</a></li>
-          </ul>
+          <div class="menu-item">
+            <a href="#" class="task-navigation">Задания</a>
+            <ul class="submenu">
+                <li><a href="#" data-task="1">1 - привязка</a></li>
+                <li><a href="#" data-task="2">2 - линейная диаграмма</a></li>
+                <li><a href="#" data-task="3">3 - координатные оси</a></li>
+                <li><a href="#" data-task="4">4 - круговая диаграмма</a></li>
+            </ul>
+          </div>
       </nav>
   </header>
   <main>
@@ -33,12 +34,10 @@
       <iframe id="frame_original"></iframe>
     </section>
     <section class="task" id="task">
-      <!-- <h2>Задание</h2> -->
       <button class="btn" data-action="toShowTheory">Теория</button>
       <button class="btn" data-action="toCheckScreen">Проверить</button>
       <h2>Исправьте код так, чтобы получилась картинка как в окне с образцом</h2>
-
-      <div id="result">:(</div>
+      <div id="result">Холодно как летом 2017</div>
       <div id="theory_article">
         <span class="close-theory" data-action="toHideTheory">×</span>
                 <a name="top">
