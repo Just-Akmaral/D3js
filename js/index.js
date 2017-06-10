@@ -57,46 +57,7 @@ var variants = {
                   "var hbAxis = d3.svg.axis().scale(widthScale).orient('bottom');"+
                   "chart_area.append('g').attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(AXIS_SIZE)+')').classed('axis', true).call(htAxis);"+
                   "var hbaxis_area = chart_area.append('g').attr('transform', 'translate('+(AXIS_SIZE+PADDING)+','+(CHART_HEIGHT-AXIS_SIZE)+')').classed('axis', true).call(hbAxis);",
-    task:"var chart_area =\n" +
-      "d3.select('body').append('div').classed('chart_area', true); \n" +
-      "\n" +
-    "var data = []; \n" +
-    "//добавьте в data необходимые данные любым путем\n"+
-    "//подберите масштаб\n"+
-    "var CHART_WIDTH, CHART_HEIGHT;\n"+
-    "\n" +
-    "var widthScale = d3.scale.linear()\n" +
-      "\t.domain([d3.min(data, function(d, i) {return d;}),\n" +
-      "d3.max(data, function(d, i) {return d;})])\n" +
-      "\t.range([0, CHART_WIDTH])\n" +
-      "\t.nice();\n"+
-    "\n" +
-    "var hAxis_area =\n" +
-      "d3\n" +
-      "\t.select('body')\n" +
-      "\t.append('div')\n" +
-      "\t.style('position', 'absolute');\n" +
-      "\n" +
-    "var ticks = widthScale.ticks(10);\n" +
-    "hAxis_area\n" +
-    "\t.selectAll('span')\n" +
-    "\t.data(ticks)\n" +
-    "\t.enter()\n" +
-    "\t.append('span')\n" +
-    "\t.style('position', 'absolute')\n" +
-    "\t.style('left', function(d,i) { return widthScale(d) + 'px'; } )\n" +
-    "\t.text(String);\n" +
-    "\n" +
-    "chart_area\n" +
-    "\t.selectAll('div')\n" +
-    "\t.data(data)\n" +
-    "\t.enter().append('div').classed('bar_area', true)\n" +
-    "\t.style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; })\n"+
-    "\t//добавьте высоту прямоугольникам равную 20px\n"+
-    "\t//также margin с параметрами (2px 0px)\n"+
-    "\t//добавьте ширину по аналогии с добавлением координат в коде выше\n"+
-    "\t//а также заполните прямоугольники значениями\n"+
-    ";"
+    task:""
   },
   4:{
     originalCode: "var data = [10,8,6,4,2,1,3,5,7,9];"+
@@ -163,10 +124,12 @@ function toCheckScreen(){
         resemble(imgTrue).compareTo(imgCheck).onComplete(function (data) {
             var percentage = 100 - Math.ceil(data.rawMisMatchPercentage);
             var result = document.getElementById('result');
-            result.innerHTML = percentage + "%";
+
             if (percentage == 100) {
+              result.innerHTML = ":)";
               result.style.backgroundColor = '#62c462';
             }else {
+              result.innerHTML = percentage + "%";
               result.style.backgroundColor = '#ee5f5b';
             }
          });
@@ -175,7 +138,6 @@ function toCheckScreen(){
     }
   });
 }
-
 
 //////////////////////Переключение теории
 function clickInTask(elem) {
@@ -201,26 +163,51 @@ function clickInTask(elem) {
       }
     };
   }
-  new clickInTask(task);
+new clickInTask(task);
+
+
+
+// ///////////// сохранить действие после нажатия кнопки в JS
+// saveOpen(theory_article);
+// saveOpen(div_overlay);
+//
+// function saveOpen(item){
+//   localStorage.setItem('hide', item.style.display);
+// }
+// function openSaveOpen(item){
+//   if(localStorage.getItem('hide') == 'block') { // если значение ключа hide "inline"
+//     item.style.display = 'block';
+//   }
+// }
+//
+// openSaveOpen(document.getElementById('theory_article'));
+
 
 ///////////////////////Переключение активного меню
 var controls = document.querySelectorAll('.header-navigation ul li a');
 for (var i = 0; i < controls.length; i++) {
     clickControl(controls[i]);
 }
-function toggleTask(control) {
-    for (var i = 0; i < controls.length; i++) {
-        controls[i].classList.remove('active');
-    }
-    control.classList.add('active');
-    var action = control.getAttribute('data-task');
-    showOriginalFrame(action);
-    setTask(action);
-}
 function clickControl(control) {
     control.addEventListener('click', function() {
         toggleTask(control);
     });
 }
-var defaultTask = document.querySelector('.header-navigation ul li:first-of-type a');
+function toggleTask(control) {
+    for (var i = 0; i < controls.length; i++) {
+        controls[i].classList.remove('active');
+    }
+    control.classList.add('active');
+    var task_number = control.getAttribute('data-task');
+    showOriginalFrame(task_number);
+    setTask(task_number);
+    localStorage.setItem('item_number', task_number);//сохраняем номер задания
+}
+
+var defaultTask;
+var idNumber = localStorage.getItem('item_number');
+defaultTask = document.querySelector('.header-navigation ul li:first-of-type a');
+ if(idNumber) {
+    defaultTask = document.querySelector('.header-navigation ul li:nth-of-type(' + idNumber + ') a');
+  }
 toggleTask(defaultTask);
