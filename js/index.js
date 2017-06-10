@@ -5,24 +5,47 @@ var code_area_html =
 
 var variants = {
   1:{
-    originalCode:"var data = [10,8,6,4,2,1,3,5,7,9];d3.select('body').selectAll('p').data(data).enter().append('p').style('color',function(d, i) { return 'hsl(360,100%,'+(100-d/0.1)+'%)'; }).text(function(d) { return d; });",
-    task:"1 task"
+    originalCode: "var data = [10,8,6,4,2,1,3,5,7,9];d3.select('body').selectAll('p').data(data).enter().append('p').text(function(d) { return d; }).style('color', function(d) {if (d > 5) {return 'red';} else {  return 'black';}});",
+    task: "var data = [];//добавьте необходимые данные\n"+
+          "d3.select('body')\n"+
+          "// Сделайте выборку всех дочерних элементов <p> из текущей выбoрки\n"+
+          "// Потом свяжите выборку с мaссивом данных data\n"+
+          "// Из всего множества элементов выделите подмнoжество добавляемых элементов 'enter'\n"+
+          "// Добавьте новые элементы <p> </p>\n"+
+          ".text(function(d) { return d; })\n"+
+          "//Далее напишите функцию, которая делает цвет красным, если текущее значение превышает 5, иначе цвет оставьте черным\n"+
+          ";"
     },
   2:{
     originalCode: "var chart_area =d3.select('body') .append('div').classed('chart_area', true);"+
                   "var data = [10,8,6,4,2,1,3,5,7,9];"+
-                  "var CHART_WIDTH = 400;"+
-                  "var widthScale = d3.scale.linear().domain([d3.min(data, function(d, i) {return d;}),"+
-                  "d3.max(data, function(d, i) {return d;})]).range([0, CHART_WIDTH]).nice();"+
                   "chart_area.selectAll('div').data(data).enter().append('div').classed('bar_area', true)"+
                   "	.style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; })"+
-                  "	.style('height', '20px').style('margin', '2px 0px').style('width', function(d,i) { return widthScale(d) + 'px'; } ).text(function(d) { return d; });",
-    task:"2 task"
+                  "	.style('height', '20px').style('margin', '2px 0px').style('width', function(d,i) { return d*40 + 'px'; } ).text(function(d) { return d; });",
+    task: "var data = [10,8,6,4,2,1,3,5,7,9];\n"+
+          "var chart_area =\n"+
+          "\td3\n"+
+          "\t.select('body') \n"+
+          "\t.append('div')    \n"+
+          "\t.classed('chart_area', true); \n"+
+          "\n"+
+          "chart_area\n"+
+          "//В следующих 3х строках затесалась ошибка - попробуйте найти.\n"+
+          "\t.select('div')\n"+
+          "\t.data(data)\n"+
+          "\t.enter().append('div').classed('bar_area', true)\n"+
+          "//Цвета выглядят бледно - добавьте интенсивности. Подсказка: знаменатель кратен 0.5\n"+
+          "\t.style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/2)+'%)'; })\n"+
+          "\t.style('height', '20px')\n"+
+          "\t.style('margin', '2px 0px')\n"+
+          "//Подберите необходимую длину прямоугольников(она кратна 10)\n"+
+          "\t.style('width', function(d,i) { return d + 'px'; } )\n"+
+          "\t.text(String);"
   },
   3:{
     originalCode: "var data = [10,8,6,4,2,1,3,5,7,9];"+
                   "var CHART_WIDTH = 400, CHART_HEIGHT = 300;"+
-                  "var AXIS_SIZE = 30, PADDING = 0;"+
+                  "var AXIS_SIZE = 50, PADDING = 0;"+
                   "var PLOT_AREA_WIDTH = CHART_WIDTH - 2*(AXIS_SIZE + PADDING), PLOT_AREA_HEIGHT = CHART_HEIGHT - 2*(AXIS_SIZE + PADDING);"+
                   "var BAR_AVAIL_HEIGHT = PLOT_AREA_HEIGHT / data.length, BAR_SPACING_TOP = 1, BAR_SPACING_BOTTOM = BAR_SPACING_TOP,BAR_HEIGHT = BAR_AVAIL_HEIGHT - BAR_SPACING_TOP - BAR_SPACING_BOTTOM;"+
                   "var chart_area = d3.select('body').append('svg').attr('class', 'chart_area').attr('width', CHART_WIDTH).attr('height', CHART_HEIGHT);"+
@@ -141,7 +164,7 @@ function toCheckScreen(){
             var percentage = 100 - Math.ceil(data.rawMisMatchPercentage);
             var result = document.getElementById('result');
             result.innerHTML = percentage + "%";
-            if (percentage >= 80) {
+            if (percentage == 100) {
               result.style.backgroundColor = '#62c462';
             }else {
               result.style.backgroundColor = '#ee5f5b';
@@ -158,18 +181,21 @@ function toCheckScreen(){
 function clickInTask(elem) {
     this.toShowTheory = function() {
       theory_article.style.display = "block";
+      div_overlay.style.display = "block";
     };
     this.toHideTheory = function() {
       theory_article.style.display = "none";
+      div_overlay.style.display = "none";
     };
     this.toCheckScreen = function() {
       toCheckScreen();
     };
     var self = this;
     var theory_article = document.getElementById("theory_article");
+    var div_overlay = document.getElementsByClassName("overlay")[0];
     elem.onclick = function(e) {
       var target = e.target;
-      var action = target.getAttribute('data-action');
+      var action = target.getAttribute("data-action");
       if (action) {
         self[action]();
       }

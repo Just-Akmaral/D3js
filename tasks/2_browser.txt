@@ -1,0 +1,19 @@
+"var data = [10,8,6,4,2,1,3,5,7,9];\n"+
+          "var chart_area =\n"+
+          "\td3\n"+
+          "\t.select('body') \n"+
+          "\t.append('div')    \n"+
+          "\t.classed('chart_area', true); \n"+
+          "\n"+
+          "chart_area\n"+
+          "//В следующих 3х строках затесалась ошибка - попробуйте найти.\n"+
+          "\t.select('div')\n"+
+          "\t.data(data)\n"+
+          "\t.enter().append('div').classed('bar_area', true)\n"+
+          "//Цвета выглядят бледно - добавьте интенсивности. Подсказка: знаменатель кратен 0.5\n"+
+          "\t.style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/2)+'%)'; })\n"+
+          "\t.style('height', '20px')\n"+
+          "\t.style('margin', '2px 0px')\n"+
+          "//Подберите необходимую длину прямоугольников(она кратна 10)\n"+
+          "\t.style('width', function(d,i) { return d + 'px'; } )\n"+
+          "\t.text(String);"

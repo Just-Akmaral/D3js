@@ -3,5 +3,11 @@ d3.select('body')
 .selectAll('p')
 .data(data)
 .enter().append('p')
-.style('color',function(d, i) { return 'hsl(360,100%,'+(100-d/0.1)+'%)'; })
-.text(function(d) { return d; });
+.text(function(d) { return d; })
+.style("color", function(d) {
+    if (d > 5) {
+        return "red";
+    } else {
+        return "black";
+    }
+});

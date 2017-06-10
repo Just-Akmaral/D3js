@@ -4,7 +4,7 @@ main{
   flex-wrap: wrap;
   .frame{
     &_edit,&_visual{
-      span {
+      .label_info {
         display: inline-block;
         padding: 2px 4px;
         font-size: 12px;
@@ -14,9 +14,11 @@ main{
         white-space: nowrap;
         position: absolute;
         z-index: 500;
-        right: 20px;
+        right: 1%;
         margin: 5px;
         background-color: #ee5f5b;
+        &_result{right: 32%;}
+        &_pattern{right: 0.5%;}
       }
     }
     &_edit{
@@ -67,30 +69,44 @@ main{
             }
       }
     #result{
-      display: block;
-      // white-space: nowrap;
+      display: inline-block;
+      white-space: nowrap;
       background-color: #ee5f5b;//#62c462;
-      font-size: 12px;
+      border-radius: 5px;
+      padding: 8px 5px;
+      margin: 5px 0px;
+      font-size: @desktop-font-size-p;
       color: #fff;
       text-align: center;
-      width: 170px;
+      width: 50px;
     }
-  }
-
-#theory_article{
-    display: none;
-    z-index: 1000;
-    .zero-centered();
-    position: fixed;
-    width: 50%;
-    height: 80%;
-    overflow: auto;
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid black;
-    background-color: white;
-    code,pre{
-      background-color:rgba(173, 183, 189,0.1);
+    #theory_article{
+        display: none;
+        z-index: 5000;
+        .zero-centered();
+        top: 10%;
+        bottom: 10%;
+        position: fixed;
+        width: 50%;
+        min-height: 300px;
+        overflow: auto;
+        box-sizing: border-box;
+        padding: 20px 30px;
+        box-shadow: 0 2px 5px #999;
+        background-color: white;
+        code,pre{
+          background-color:rgba(173, 183, 189,0.1);
+        }
+    }
+    .overlay{
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1900;
+      background: rgba(0,0,0,0.2);
     }
   }
 }
