@@ -1,5 +1,0 @@
-"var chart_area =d3.select('body') .append('div').classed('chart_area', true);"+
-                  "var data = [10,8,6,4,2,1,3,5,7,9];"+
-                  "chart_area.selectAll('div').data(data).enter().append('div').classed('bar_area', true)"+
-                  "	.style('background-color',function(d, i) { return 'hsl(250,100%,'+(100-d/0.5)+'%)'; })"+
-                  "	.style('height', '20px').style('margin', '2px 0px').style('width', function(d,i) { return d*40 + 'px'; } ).text(function(d) { return d; });",

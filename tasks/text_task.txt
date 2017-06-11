@@ -1,7 +1,0 @@
-var code_area_js=
-"var data = ['I', 'love', 'd3js','!'];\n" +
-"\td3.select('body')\n"+
-"\t.selectAll('p')\n"+
-"\t.data(data)\n"+
-"\t.enter().append('p')\n"+
-"\t.text(function(d) { return d; });";
