@@ -258,6 +258,12 @@ function showOriginalFrame(i){
   originalDoc.close();
 }
 
+function setResult(value){
+  var result = document.getElementById('result');
+  result.innerHTML = value;
+  result.style.backgroundColor = '#ee5f5b';
+}
+
 //////////////////////Сравнение картинок
 function toCheckScreen(){
   var imgCheck,imgTrue;
@@ -272,10 +278,9 @@ function toCheckScreen(){
         resemble(imgTrue).compareTo(imgCheck).onComplete(function (data) {
             var percentage = 100 - Math.ceil(data.rawMisMatchPercentage);
             var result = document.getElementById('result');
-            result.innerHTML = "Результат: " + percentage + "%";
-            result.style.backgroundColor = '#ee5f5b';
-            if ((percentage<=80)&&(getCode()=="")){
-              result.innerHTML = "Холодные льды Арктики";
+            setResult( "Результат: " + percentage + "%");
+            if ((percentage<=80)||(getCode()=="")){
+              setResult("Очень плохо");
             } else if (percentage==100) {
               result.style.backgroundColor = '#62c462';//зеленый
             }
@@ -329,6 +334,7 @@ function toggleTask(control) {
     var task_number = control.getAttribute('data-task');
     showOriginalFrame(task_number);
     setTask(task_number);
+    setResult("Холодные льды Арктики");
     localStorage.setItem('item_number', task_number);//сохраняем номер задания
 }
 
