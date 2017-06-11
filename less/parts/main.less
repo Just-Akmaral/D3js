@@ -45,12 +45,13 @@ main{
     flex-grow: 2;
     padding: 10px 25px;
     .setColorStyle(white);
-    h2{
+    h2,.result_txt{
         .setTextSize(@size: @desktop-font-size-p; @height: @desktop-font-size-p; @weight: 100);
-        margin: 10px;
+        margin: 7px 0px 0px;
         padding: 5px;
         text-align: center;
       }
+    .result_txt{margin: 3px;}
     .btn,label{
           min-width: 120px;
           cursor: pointer;
@@ -70,11 +71,10 @@ main{
             }
       }
     #result{
-      display: inline-block;
-      white-space: nowrap;
+      display: block;
       background-color: #ee5f5b;//#62c462;
       padding: 8px 5px;
-      margin: 5px 0px;
+      margin: 5px auto;
       font-size: 15;
       color: #fff;
       text-align: center;
