@@ -316,6 +316,11 @@ function clickInTask(elem) {
   }
 new clickInTask(task);
 
+function setTaskNumber(value){
+  var item = document.getElementsByClassName("task_number")[0];
+  item.innerHTML = value + "/4";
+}
+
 ///////////////////////Переключение активного меню
 var controls = document.querySelectorAll('.header-navigation ul li a');
 for (var i = 0; i < controls.length; i++) {
@@ -334,6 +339,7 @@ function toggleTask(control) {
     var task_number = control.getAttribute('data-task');
     showOriginalFrame(task_number);
     setTask(task_number);
+    setTaskNumber(task_number)
     setResult("Холодные льды Арктики");
     localStorage.setItem('item_number', task_number);//сохраняем номер задания
 }
