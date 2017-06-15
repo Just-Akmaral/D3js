@@ -224,6 +224,10 @@ var variants = {
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/Dreamweaver");
 editor.getSession().setMode("ace/mode/javascript");
+editor.getSession().selection.on('changeSelection', function (e)
+{
+    editor.getSession().selection.clearSelection();
+});
 
 function setTask(i){
   editor.setValue(variants[i].task);
